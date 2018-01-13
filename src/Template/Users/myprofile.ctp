@@ -1,0 +1,1 @@
+<?php echo __('this is my profile.'); ?>
