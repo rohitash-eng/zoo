@@ -26,7 +26,8 @@ use Cake\Routing\Router;
                                     <li><a href="<?php echo Router::url('/', true);?>">Home</a></li>
                                     <li><a href="<?php echo Router::url('/', true);?>">Blog</a></li>
                                     <li><a href="<?php echo Router::url('/', true);?>">Become a advertiser</a></li>
-                                    <li><a href="<?php echo Router::url('/', true);?>">Login / Sign Up</a></li>
+                                    <li><a href="<?php echo Router::url('/', true);?>login">Login</a></li>
+                                    <li><a href="<?php echo Router::url('/', true);?>signup">Sign Up</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/zoo/src/Template/Users/myprofile.ctp</file>
-            <file>file:/C:/xampp/htdocs/zoo/src/Template/Layout/login_signup_layout.ctp</file>
-            <file>file:/C:/xampp/htdocs/zoo/src/Template/Element/client/end_footer.ctp</file>
-            <file>file:/C:/xampp/htdocs/zoo/src/Template/Homes/index.ctp</file>
-            <file>file:/C:/xampp/htdocs/zoo/src/Template/Users/signup.ctp</file>
+            <file>file:/C:/xampp/htdocs/zoo/webroot/js/form_validate/login.js</file>
+            <file>file:/C:/xampp/htdocs/zoo/src/Controller/UsersController.php</file>
+            <file>file:/C:/xampp/htdocs/zoo/src/Model/Table/UsersTable.php</file>
             <file>file:/C:/xampp/htdocs/zoo/src/Template/Layout/common_layout.ctp</file>
-            <file>file:/C:/xampp/htdocs/zoo/src/Template/Element/client/header.ctp</file>
+            <file>file:/C:/xampp/htdocs/zoo/src/Template/Users/login.ctp</file>
         </group>
     </open-files>
 </project-private>

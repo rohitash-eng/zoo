@@ -44,9 +44,15 @@
          <?= $this->Html->css('plugins.css') ?>
         <?= $this->Html->css('style.css') ?>
         <?= $this->Html->css('responsive.css') ?>
+        <?= $this->Html->css('admin_css.css') ?>
         
         <?=
         $this->Html->script(['modernizr-2.8.3-respond-1.4.2.min'])
+        ?>
+        <?=
+        $this->Html->script(['jquery-2.1.4.min.js','validate/jquery.validate.min.js',
+            'validate/jquery-ui.js','form_validate/isAlphNumValidate',
+            ])
         ?>
     </head>
 
@@ -67,7 +73,7 @@
         <div class="scrollup">
             <a href="#"><i class="fa fa-chevron-up"></i></a>
         </div>
-        <?= $this->Html->script(['jquery-1.11.2.min']) ?>
+        
         <?= $this->Html->script(['bootstrap.min']) ?>
         <?= $this->Html->script(['isotope.min.js']) ?>
         <?= $this->Html->script(['jquery.easypiechart.min.js']) ?>

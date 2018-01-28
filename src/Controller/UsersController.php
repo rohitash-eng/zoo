@@ -11,8 +11,8 @@ use Cake\Utility\Security;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Mailer\MailerAwareTrait;
 use Cake\Core\Configure;
-Configure::load('success_error_msg');
 
+Configure::load('success_error_msg');
 
 /**
  * Users Controller
@@ -40,21 +40,32 @@ class UsersController extends AppController {
     }
 
     public function login() {
-        if($this->Auth->User('id')){
+        if ($this->Auth->User('id')) {
             return $this->redirect($this->Auth->redirectUrl());
         }
         $msg = Configure::read('Msg');
         if ($this->request->is('post')) {
             $user = $this->Users->newEntity($this->request->data, ['validate' => 'Login']);
+//            pr($user);die;
             if (empty($user->errors())) {
                 $user = $this->Auth->identify();
-                if ($user && $user['status'] == 1) {
+                if ($user && $user['status'] === PENDING) {
                     $this->Auth->setUser($user);
                     $this->Flash->success($msg['loginSuccess']);
                     return $this->redirect('/myprofile');
                 } else {
-                    $this->Flash->error($msg['emailNotVerify']);
-                    return $this->redirect('/login');
+                    if ($user && $user['role'] === ADMIN) {
+                        $this->Auth->setUser($user);
+                        $this->Flash->success($msg['loginSuccess']);
+                        return $this->redirect('/admin/users/dashboard');
+                    } elseif ($user && $user['role'] === USER) {
+                        $this->Auth->setUser($user);
+                        $this->Flash->success($msg['loginSuccess']);
+                        return $this->redirect('/myprofile');
+                    } else {
+                        $this->Flash->error($msg['emailNotVerify']);
+                        return $this->redirect('/login');
+                    }
                 }
             } else {
                 $user->errors($user->errors());
@@ -98,7 +109,7 @@ class UsersController extends AppController {
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function signup() {
-        if($this->Auth->User('id')){
+        if ($this->Auth->User('id')) {
             return $this->redirect($this->Auth->redirectUrl());
         }
         $user = $this->Users->newEntity();

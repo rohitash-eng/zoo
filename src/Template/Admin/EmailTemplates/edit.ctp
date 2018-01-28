@@ -1,0 +1,1 @@
+<?php echo $this->element('email_template_form',['action_name'=>'edit']);?>
