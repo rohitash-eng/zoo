@@ -50,7 +50,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/error', ['controller' => 'CmsPages', 'action' => 'errorPage']);
     $routes->connect('/myprofile', ['controller' => 'Users', 'action' => 'myprofile']);
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);    
-    $routes->connect('/dashboard', ['controller' => 'Users', 'action' => 'dashboard']);
+    
 
     /*     * @This below routes are using for ajax* */
     //$routes->connect('/get_closing_form', ['controller' => 'Closings', 'action' => 'getClosingForm']);
@@ -66,6 +66,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 });
 Router::prefix('admin', function ($routes) {
     $routes->connect('/', ['controller' => 'Index', 'action' => 'index']);
+    $routes->connect('/dashboard', ['controller' => 'Users', 'action' => 'dashboard']);
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
 //    $routes->connect('/success', ['controller' => 'Users', 'action' => 'success']);
 //    $routes->connect('/my-profile', ['controller' => 'Users', 'action' => 'myProfile']);

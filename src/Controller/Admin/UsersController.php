@@ -14,10 +14,12 @@ class UsersController extends UC
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['login', 'logout','forgotPassword','dashboard']);
+        $this->Auth->allow(['login', 'logout','forgotPassword']);
+        $this->viewBuilder()->layout('common_admin_layout');
     }
 
     public function dashboard(){
-        echo 'come';die;
+        //$this->layout = 'common_admin_layout';
+        //pr($this->Auth->user());die;
     }
 }

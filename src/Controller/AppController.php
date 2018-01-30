@@ -31,6 +31,7 @@ use Cake\Routing\Router;
  */
 class AppController extends Controller {
 
+    var $base_url;
     /**
      * Initialization hook method.
      *
@@ -73,7 +74,10 @@ class AppController extends Controller {
     }
 
     public function beforeFilter(Event $event) {
-        $this->Auth->allow(['index', 'view', 'display']);
+        //$this->Auth->allow(['index', 'view', 'display']);
+        $this->base_url = Router::url('/', true);
+        $baseUrl = $this->base_url;
+        $this->set(compact('baseUrl'));
     }
 
     /**
@@ -90,12 +94,18 @@ class AppController extends Controller {
         }
     }
 
-    public function isAuthorized($user) {
-        // Admin can access every action
-        if (isset($user['role']) && $user['role'] === 'admin') {
+    public function isAuthorized($user = null)
+    {
+        // Any registered user can access public functions
+        if (empty($this->request->params['prefix'])) {
             return true;
         }
 
+        // Only admins can access admin functions
+        if ($this->request->params['prefix'] === 'admin') {
+            return (bool)($user['role'] === 'ADMIN');
+        }
+        
         // Default deny
         return false;
     }
